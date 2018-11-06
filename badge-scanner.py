@@ -1,6 +1,6 @@
 # External library imports
 import RPi.GPIO as GPIO
-import array, threading, time, requests
+import array, threading, time, requests, sys, re
 from signal import pause
 
 # Pin definitions
@@ -25,6 +25,7 @@ TIMER_COUNT = 0.25
 bits = []
 userid = 0
 readStarted = False
+url = ""
 
 # Reading functions
 def checkReadStatus():
@@ -55,7 +56,6 @@ def readComplete():
         bitsID = bitsTotal[12:-1]
         print('Card read succesfully. User card number = ' + str(int(bitsID,2)))
         userid = int(bitsID,2)
-        url = 'http://172.31.10.24:3000/api/login'
         h = {'Content-Type': 'application/json',}
         d = '{"cardId": "' + str(userid)  + '"}'
         try:
@@ -101,12 +101,10 @@ def beep(s_on, s_off):
     GPIO.output(BZ, GPIO.HIGH)
     time.sleep(s_off)
 
-# Comms functions
-
-
 # Main
 
 try:
+    
     timer = threading.Timer(TIMER_COUNT, readComplete)
     GPIO.add_event_detect(D0, GPIO.FALLING, callback=readD0)
     GPIO.add_event_detect(D1, GPIO.FALLING, callback=readD1)
@@ -114,11 +112,18 @@ try:
     GPIO.output(BZ, GPIO.HIGH)
     GPIO.output(GR, GPIO.HIGH)
     GPIO.output(RD, GPIO.HIGH)
-
+    
+    if(len(sys.argv) != 2):
+        print('Please pass the app URL as an argument when running this file.')
+        GPIO.cleanup()
+        sys.exit()
+    url = sys.argv[1]()
+        sys.exit()
+    
     print('**** RFID CARD SCANNER ***\nPress Ctrl+C to end.\nReady to scan...')
-
     pause()
     GPIO.cleanup()
+    
 except KeyboardInterrupt:
     GPIO.cleanup()
     print('\nProgram End.')
