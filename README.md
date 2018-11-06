@@ -1,2 +1,4 @@
 # hack2018-project_bookworm-rfid
-Code for Raspberry Pi + RFID reader interface
+Python program for Raspberry Pi + RFID reader interface
+
+- Made with <3
