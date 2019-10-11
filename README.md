@@ -7,7 +7,7 @@ Comms: Wiegand Protocol
 
 Circuit Diagram:
 
-
+![alt text](imgs/circuit.jpg "circuit")
 
 Command format:
 
