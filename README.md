@@ -13,4 +13,4 @@ Command format:
 
 http://\<IP\>:\<PORT\>\<API CALL\>
 
-- Made with <3
+- Made with :heart:
