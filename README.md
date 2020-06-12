@@ -1,21 +1,23 @@
 # rfid-scanner
-A KISS Python program to interface Raspberry Pi + RFID reader and send data to a library app server. To use, pass the web app server URL as an argument when running the script on a Raspberry Pi.
+A very simple interface program written in Python. The purpose of this application is to read RFID devices via an RFID reader connected to a Raspberry Pi and send the data to an HTTP endpoint. The Raspberry Pi and HTTP endpoint must have network access to each other. 
 
-**RFID Scanner model**
+## How to use
+Copy this script into your Raspberry Pi. Run the Python script via the command line, passing the `HTTP endpoint` as a parameter to the script. While the script runs, it will wait until an RFID scan triggers the read sequence. If the data can be decoded succesfully, it will send the data via an HTTP request to the HTTP endpoint specified by the initial parameter.
 
-LNL-MT11
+### Parameter
 
-**Comms**
+Parameter | Format | Description
+--- | --- | ---
+HTTP endpoint | `http://<IP\|URL>:<PORT><API_ENDPOINT_PATH>` | HTTP Endpoint where the read RFID data will be sent. Data will be sent in JSON format in the following schema: `{'cardId': '<READ_DATA>'}`
 
-Wiegand Protocol
+## Project Specs
+- **Raspberry Pi:** 3 Model B+ 
+- **RFID Reader:** Schlage LNL-MT11
+- **Comms Protocol:** Wiegand Protocol
 
-**Circuit Diagram**
+## Circuit Diagram
 
 ![alt text](imgs/circuit.jpg "circuit")
 
-**Command format**
 
-http://\<IP\>:\<PORT\>\<API CALL\>
-
-
-Made with :heart:
+Made with :heart: by [@bombillazo](https://twitter.com/bombillazo)
