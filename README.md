@@ -8,7 +8,7 @@ Copy this script into your Raspberry Pi. Run the Python script via the command l
 
 Parameter | Format | Description
 --- | --- | ---
-HTTP endpoint | `http://<IP\|URL>:<PORT><API_ENDPOINT_PATH>` | HTTP Endpoint where the read RFID data will be sent. Data will be sent in JSON format in the following schema: `{'cardId': '<READ_DATA>'}`
+`HTTP endpoint` | `http://<IP\|URL>:<PORT><API_ENDPOINT_PATH>` | HTTP Endpoint where the read RFID data will be sent. Data will be sent in JSON format in the following schema: `{'cardId': '<READ_DATA>'}`
 
 ## Project Specs
 - **Raspberry Pi:** 3 Model B+ 
