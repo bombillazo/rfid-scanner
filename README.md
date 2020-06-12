@@ -19,5 +19,4 @@ Parameter | Format | Description
 
 ![alt text](imgs/circuit.jpg "circuit")
 
-
 Made with :heart: by [@bombillazo](https://twitter.com/bombillazo)
